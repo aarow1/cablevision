@@ -1,6 +1,10 @@
 function [handle] = plot_H(H,color)
 %plot_H plots a homogeneous transformation
 
+if (nargin == 1)
+    color = [1 0 0];
+end
+
 origin = H(1:3,4);
 origin_3x = [origin, origin, origin,];
 
