@@ -1,0 +1,4 @@
+%% Init stuff
+addtopath('matlab_tools');
+
+R = eye(3);
