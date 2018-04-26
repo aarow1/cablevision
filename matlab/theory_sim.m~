@@ -134,9 +134,9 @@ psuedo_P =  P' * inv(P*P');
 mud = diag * psuedo_P * [R0'*Fd; Md];
 
 %virtual control input
-mu = sym('mu', [3,n]);
+mu = syms('mu', [3,n]);
 for ii = 1:n
-    mu(:,ii) = q(:,ii)*q(:,ii)'*(mud(3*(ii-1)+(1:3)));
+    mu(:,ii)
 end
 
 
