@@ -1,0 +1,72 @@
+x0 = sym('x0', [3 1]);
+x0d = sym('x0d', [3 1]);
+R = sym('R', [3 3]);
+
+% syms ex0(x0, x0d)
+ex0 = x0-x0d;
+ex1 = R*(4*ex0);
+
+state.x0 = [0 0 1]';
+state.x0d = [1 2 3]'
+
+subs_state(state)
+
+function [st_var, st_val] = subs_state(st)
+    fprintf('running subs state');
+    f_names = fieldnames(st);
+    for ii = 1:length(f_names)
+        val_ii= st.(f_names{ii});
+%         var_ii= st.(f_names{ii});
+        
+        n_val = prod(size(val_ii))
+        
+        var_names = char(string(sym(f_names{ii})))
+        
+%         st_val = [st_val; reshape(val_ii, [n_val 1])];
+%         st_var = [st_var, sym(
+    end
+    
+end
+
+
+%%
+% st.var = [];
+% st.val = [];
+% 
+% st = addToState(st, x0, [1 2 3]');
+% st = addToState(st, x0d, [0 0 1]');
+% st = addToState(st, R, eye(3));
+% 
+% subs(ex1, st.var, st.val)
+
+%%
+
+function [state] = addToState(state, var, val)
+    var_size = size(var,1) * size(var,2);
+    state.var = [state.var; reshape(var, var_size, 1)];
+    state.val = [state.val; reshape(val, var_size, 1)];
+end
+
+% 
+% sub_var = [x0];
+% sub_val = [1 2 3]';
+% 
+% sub_var = [sub_var; x0d];
+% sub_val = [sub_val; -10; -10; -10;];
+% 
+% % subs(ex0, sub_var, sub_val)
+% subs(ex1, sub_var, sub_val)
+
+% x0 = [1 2 3]'
+
+% ex0 = subs(ex0,x0,[1 2 3]')
+
+% ex1 = ex0 + 4*x0
+
+% syms ex1(ex0)
+% ex1 = ex0 - x0d;
+% subs(ex1)
+
+% x0 = subs(x0, x0, [1 2 3]')
+
+% subs(ex0)
